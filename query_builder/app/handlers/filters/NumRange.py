@@ -36,8 +36,7 @@ class NumRange():
         Returns lower and upper bounds. Negative values are permitted.
         Returns None if parsing failed."""
 
-        print "self.query_param_value"
-        print self.query_param_value
+
         arg_param = self.query_param_value[0]
         if arg_param:
             exp = "^([-]*[0-9]*)[-]([-]*[0-9]*)$"

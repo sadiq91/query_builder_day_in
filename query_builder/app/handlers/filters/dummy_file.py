@@ -4,8 +4,7 @@ filter_object = Filter()
 
 
 keys_values = {'cash':['100-1000']}
-print "key_values"
-print keys_values
+
 
 #keys_values = {'cash':'100-1000','revenue':'1-1000', 'trading_activity' : '20150101-20160101', 'ecommerce' :'1'}
 

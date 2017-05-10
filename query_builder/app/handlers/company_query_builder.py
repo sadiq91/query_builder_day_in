@@ -58,10 +58,6 @@ class CompanyQueryBuilder(object):
         #self.parse_range_argument("cash")
         #self.parse_range_argument("revenue")
 
-
-        #key + dict (range)
-        #print "self.query_params"
-        #print self.query_params
         filter_return_object = filterObject.filter_query(self.query_params)
         self.parsed_params = filter_return_object
 
@@ -90,11 +86,6 @@ class CompanyQueryBuilder(object):
         if arg_val or include_if_false:
             self.parsed_params[arg] = arg_val
 
-    def parse_range_argument(self, arg):
-        """Update parsed params if arg in request"""
-        lower, upper = self.parse_range(arg)
-        if lower or upper:
-            self.add_to_parsed_params(arg, {"gte": lower, "lte": upper})
 
     def parse_get_arguments(self, arg, key=None):
         """Update parsed params if arg in request"""
@@ -103,43 +94,7 @@ class CompanyQueryBuilder(object):
         if args:
             self.add_to_parsed_params(key, args)
 
-    def parse_range(self, arg):
-        """Parser for arguments that are numerical range types.
 
-        Takes the argument to check as an input (e.g. revenue).
-        Expect an argument of the format: n-N
-        Returns lower and upper bounds. Negative values are permitted.
-        Returns None if parsing failed."""
-
-        arg_param = self.get_argument(arg, None)
-
-        if arg_param:
-            exp = "^([-]*[0-9]*)[-]([-]*[0-9]*)$"
-            m = re.search(exp, arg_param)
-            if not m:
-                raise exceptions.ParameterValueError(key=arg, value=arg_param)
-
-            lbound, ubound = None, None
-            # Parse lower bound
-            if m.group(1):
-                try:
-                    lbound = int(m.group(1))
-                except ValueError:
-                    raise exceptions.ParameterValueError(key=arg, value=arg_param)
-
-            # Parse upper bound
-            if m.group(2):
-                try:
-                    ubound = int(m.group(2))
-                except ValueError:
-                    raise exceptions.ParameterValueError(key=arg, value=arg_param)
-
-            if lbound != None and ubound != None and lbound > ubound:
-                raise exceptions.ParameterValueError(key=arg, value=arg_param)
-
-            return lbound, ubound
-        else:
-            return None, None
 
     def parse_boolean(self, arg):
         """Parse boolean argument types
