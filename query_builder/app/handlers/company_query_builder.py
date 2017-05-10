@@ -102,7 +102,10 @@ class CompanyQueryBuilder(object):
         Returns lower and upper bounds. Negative values are permitted.
         Returns None if parsing failed."""
 
+        print "arg is " + arg
         arg_param = self.get_argument(arg, None)
+
+        print arg_param
         if arg_param:
             exp = "^([-]*[0-9]*)[-]([-]*[0-9]*)$"
             m = re.search(exp, arg_param)

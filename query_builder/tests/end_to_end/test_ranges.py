@@ -1,5 +1,7 @@
 from query_builder.main import get_es_query
 from query_builder.tests.end_to_end.es_query_template import full_es_query
+from query_builder.exceptions import ParameterValueError
+
 import pytest
 
 def revenue_range_template(gte=None, lte=None):
@@ -58,7 +60,7 @@ def test_negative_lte_gte():
 #Test lte < gte
 def test_lte_lessThan_gte():
     url = "/v1/company_query_builder?revenue=-1--100"
-    with pytest.raises(Exception):
+    with pytest.raises(ParameterValueError):
         response = get_es_query(url)
 
 

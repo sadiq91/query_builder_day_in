@@ -1,1 +1,2 @@
 from .company_query_builder import CompanyQueryBuilder
+from .filters_list import FiltersList
