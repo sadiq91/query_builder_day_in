@@ -22,7 +22,7 @@ class NumRange():
         #arg == string (key)
 
        """Update parsed params if arg in request"""
-       self.lower, self.upper = self.parse_range(self.query_param_value)
+       self.lower, self.upper = self.parse_range()
 
 
        if self.lower or self.upper:
@@ -36,7 +36,9 @@ class NumRange():
         Returns lower and upper bounds. Negative values are permitted.
         Returns None if parsing failed."""
 
-        arg_param = self.query_param_value
+        print "self.query_param_value"
+        print self.query_param_value
+        arg_param = self.query_param_value[0]
         if arg_param:
             exp = "^([-]*[0-9]*)[-]([-]*[0-9]*)$"
             m = re.search(exp, arg_param)
@@ -65,8 +67,6 @@ class NumRange():
         else:
             return None, None
 
-   def get_argument(self, name, default=None):
-        return self.query_params.get(name, [default])[-1]
 
    def add_to_parsed_params(self, param_key, param_value):
        """Add params to parsed_params if arg exists"""

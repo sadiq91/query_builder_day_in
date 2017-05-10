@@ -6,6 +6,7 @@ from query_builder import exceptions
 from query_builder.app.elastic.piston import Piston
 from query_builder.app.handlers.pagination import Pagination
 from query_builder.config.app import settings
+from query_builder.app.handlers.filters.Filters import filterObject
 
 
 class CompanyQueryBuilder(object):
@@ -54,8 +55,16 @@ class CompanyQueryBuilder(object):
         """Parse the URL parameters and build parsed_params dict."""
 
         # e.g. cash=1000-10000 or total_assets=-5000
-        self.parse_range_argument("cash")
-        self.parse_range_argument("revenue")
+        #self.parse_range_argument("cash")
+        #self.parse_range_argument("revenue")
+
+
+        #key + dict (range)
+        #print "self.query_params"
+        #print self.query_params
+        filter_return_object = filterObject.filter_query(self.query_params)
+        self.parsed_params = filter_return_object
+
 
         # Args which may have multiple queries e.g. &cid=1&cid=2
         self.parse_get_arguments("cid", "cids")
@@ -102,10 +111,8 @@ class CompanyQueryBuilder(object):
         Returns lower and upper bounds. Negative values are permitted.
         Returns None if parsing failed."""
 
-        print "arg is " + arg
         arg_param = self.get_argument(arg, None)
 
-        print arg_param
         if arg_param:
             exp = "^([-]*[0-9]*)[-]([-]*[0-9]*)$"
             m = re.search(exp, arg_param)
