@@ -40,6 +40,7 @@ class CompanyQueryBuilder(object):
         """Check argument parameters are valid and present raise exception if not"""
         request_set = set(self.query_params.keys())
         if valid_arguments:
+
             invalid = request_set - set(valid_arguments)
             if invalid:
                 raise exceptions.ParameterKeyError(key=", ".join(invalid))
@@ -153,8 +154,9 @@ class CompanyQueryBuilder(object):
 
         if arg:
             try:
+
                 parameter = datetime.datetime.strptime(
-                    arg, '%Y%m%de').date().isoformat()
+                    arg, '%Y%m%d').date().isoformat()
                 return parameter
             except Exception as e:
                 raise exceptions.ParameterValueError(key=arg, value=arg,
