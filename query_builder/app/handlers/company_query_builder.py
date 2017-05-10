@@ -104,7 +104,7 @@ class CompanyQueryBuilder(object):
 
         arg_param = self.get_argument(arg, None)
         if arg_param:
-            exp = "^([0-9]*)[-]([0-9]*)$"
+            exp = "^([-]*[0-9]*)[-]([-]*[0-9]*)$"
             m = re.search(exp, arg_param)
             if not m:
                 raise exceptions.ParameterValueError(key=arg, value=arg_param)
