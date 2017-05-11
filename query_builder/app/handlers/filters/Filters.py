@@ -17,8 +17,10 @@ class Filter(object):
 
                 classification = self.filters_list.get(key)
 
-
                 instance = classification(key,value)
+
+                print "key is - - - " + key
+                print "value is - - - " + str(value[0])
 
 
 
@@ -27,9 +29,9 @@ class Filter(object):
                 self.param_value = instance.parsed_params[key]
                 self.param_key = key
 
-                print "Filter self.param_value is"
+                print "RETURN Filter self.param_value is"
                 print self.param_value
-                print "Filter self.param_key is"
+                print "RETURN Filter self.param_key is"
                 print self.param_key
 
 

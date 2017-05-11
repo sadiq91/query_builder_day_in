@@ -58,8 +58,14 @@ class CompanyQueryBuilder(object):
         #self.parse_range_argument("cash")
         #self.parse_range_argument("revenue")
 
+        #input to be filtered
+        print "INPUT URL params"
+        print self.query_params
+
         Filter.filter_query(self.query_params)
         self.parsed_params[Filter.param_key] = Filter.param_value
+
+
 
 
 
@@ -68,7 +74,7 @@ class CompanyQueryBuilder(object):
         self.parse_get_arguments("sector_context", "sectors")
 
         # Special cases requiring custom logic
-        self.parse_trading_activity()
+        #self.parse_trading_activity()
 
         self.parse_boolean_argument("exclude_tps", include_if_false=False)
         self.parse_boolean_argument("ecommerce", include_if_false=False)
@@ -77,6 +83,9 @@ class CompanyQueryBuilder(object):
     def parse_trading_activity(self):
         """Parse trading activity parameters"""
         url_arg = self.get_argument('trading_activity', None)
+
+        print "url_arg is  - - - " + url_arg
+
         if url_arg:
             self.parsed_params["trading_activity"] = dict()
             self.parse_dates(url_arg, "trading_activity")
@@ -115,30 +124,7 @@ class CompanyQueryBuilder(object):
         else:
             raise exceptions.ParameterValueError(key=arg, value=arg_param)
 
-    def parse_date(self, arg):
-        """ Parse a date argument """
 
-        if arg:
-            try:
-
-                parameter = datetime.datetime.strptime(
-                    arg, '%Y%m%d').date().isoformat()
-                return parameter
-            except Exception as e:
-                raise exceptions.ParameterValueError(key=arg, value=arg,
-                                                     message=e.message)
-
-    def parse_dates(self, url_arg, key):
-        """Parse the dates arguments from URL params."""
-        datefrom, dateto = url_arg.split('-')
-        datefrom = self.parse_date(datefrom)
-        dateto = self.parse_date(dateto)
-        if datefrom or dateto:
-            self.parsed_params[key] = {}
-            if datefrom:
-                self.parsed_params[key]["gte"] = datefrom
-            if dateto:
-                self.parsed_params[key]["lte"] = dateto
 
     def add_to_parsed_params(self, param_key, param_value):
         """Add params to parsed_params if arg exists"""

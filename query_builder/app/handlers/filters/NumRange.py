@@ -1,7 +1,6 @@
 
 from query_builder import exceptions
 import re
-import urlparse
 
 
 
