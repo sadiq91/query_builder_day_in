@@ -1,7 +1,7 @@
-from query_builder.app.handlers.filters.filters_classes.Bool import Bool
-from query_builder.app.handlers.filters.filters_classes.Date import Date
-from query_builder.app.handlers.filters.filters_classes.Multi import Multi
-from query_builder.app.handlers.filters.filters_classes.Range import NumRange
+from query_builder.app.handlers.filters.filters_classes.filter_bool import Bool
+from query_builder.app.handlers.filters.filters_classes.filter_date import Date
+from query_builder.app.handlers.filters.filters_classes.filter_multi import Multi
+from query_builder.app.handlers.filters.filters_classes.filter_range import NumRange
 
 
 class FiltersList(object):
@@ -10,9 +10,7 @@ class FiltersList(object):
             'cash':NumRange,
             'revenue': NumRange,
             'cid' : Multi,
-            'cids' : Multi,
             'sector_context' : Multi,
-            'sectors' : Multi,
             'trading_activity': Date,
             'exclude_tps' : Bool,
             'ecommerce' : Bool,

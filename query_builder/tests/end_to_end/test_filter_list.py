@@ -1,31 +1,43 @@
 from query_builder.app.handlers.filters.Filters import Filter
-from query_builder.app.handlers.filters.filters_classes.Bool import Bool
-from query_builder.app.handlers.filters.filters_classes.Date import Date
-from query_builder.app.handlers.filters.filters_classes.Multi import Multi
-from query_builder.app.handlers.filters.filters_classes.Range import NumRange
-
-
-def test_lists_match():
-    filters = Filter.filters_list
-
-    expected = {
-        'cash': NumRange,
-        'revenue': NumRange,
-        'cid': Multi,
-        'cids': Multi,
-        'sector_context': Multi,
-        'sectors': Multi,
-        'trading_activity': Date,
-        'exclude_tps': Bool,
-        'ecommerce': Bool,
-        'aggregate': Bool,
-
-    }
-
-    for key, value in filters.items():
-        assert value == expected.get(key)
+from query_builder.app.handlers.filters.filters_classes.filter_bool import Bool
+from query_builder.app.handlers.filters.filters_classes.filter_date import Date
+from query_builder.app.handlers.filters.filters_classes.filter_multi import Multi
+from query_builder.app.handlers.filters.filters_classes.filter_range import NumRange
+from query_builder.app.handlers.filters.Filters import Filter
 
 
 
+def test_cash_filter():
+    input = 'cash'
+    expected = NumRange
+    assert Filter.return_filter(input) == expected
 
+def test_revenue_filter():
+    input = 'revenue'
+    expected = NumRange
+    assert Filter.return_filter(input) == expected
 
+def test_trading_activity_filter():
+    input = 'trading_activity'
+    expected = Date
+    assert Filter.return_filter(input) == expected
+
+def test_cid_filter():
+    input = 'cid'
+    expected = Multi
+    assert Filter.return_filter(input) == expected
+
+def test_sector_context_filter():
+    input = 'sector_context'
+    expected = Multi
+    assert Filter.return_filter(input) == expected
+
+def test_ecommerce_filter():
+    input = 'ecommerce'
+    expected = Bool
+    assert Filter.return_filter(input) == expected
+
+def test_sector_context_filter():
+    input = 'sector_context'
+    expected = Multi
+    assert Filter.return_filter(input) == expected

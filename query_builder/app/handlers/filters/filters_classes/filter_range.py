@@ -13,7 +13,6 @@ class NumRange():
    def __init__(self,query_param_key, query_param_value):
        self.query_param_key = query_param_key
        self.query_param_value = query_param_value
-       self.query_params = {self.query_param_key : self.query_param_value}
 
    def parse(self):
 

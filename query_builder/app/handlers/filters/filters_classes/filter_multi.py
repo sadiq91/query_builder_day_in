@@ -15,7 +15,6 @@ class Multi():
     def __init__(self, query_param_key, query_param_value):
         self.query_param_key = multi_filters.multi_class_filters_list[query_param_key]
         self.query_param_value = query_param_value
-        self.query_params = {self.query_param_key: self.query_param_value}
 
 
 
