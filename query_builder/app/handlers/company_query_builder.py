@@ -59,8 +59,8 @@ class CompanyQueryBuilder(object):
         #self.parse_range_argument("revenue")
 
         #input to be filtered
-        print "INPUT URL params"
-        print self.query_params
+        #print "INPUT URL params"
+        #print self.query_params
 
         Filter.filter_query(self.query_params)
         self.parsed_params[Filter.param_key] = Filter.param_value
@@ -70,21 +70,20 @@ class CompanyQueryBuilder(object):
 
 
         # Args which may have multiple queries e.g. &cid=1&cid=2
-        self.parse_get_arguments("cid", "cids")
-        self.parse_get_arguments("sector_context", "sectors")
+        #self.parse_get_arguments("cid", "cids")
+        #self.parse_get_arguments("sector_context", "sectors")
 
         # Special cases requiring custom logic
         #self.parse_trading_activity()
 
-        self.parse_boolean_argument("exclude_tps", include_if_false=False)
-        self.parse_boolean_argument("ecommerce", include_if_false=False)
-        self.parse_boolean_argument("aggregate")
+        #self.parse_boolean_argument("exclude_tps", include_if_false=False)
+        #self.parse_boolean_argument("ecommerce", include_if_false=False)
+        #self.parse_boolean_argument("aggregate")
 
     def parse_trading_activity(self):
         """Parse trading activity parameters"""
         url_arg = self.get_argument('trading_activity', None)
 
-        print "url_arg is  - - - " + url_arg
 
         if url_arg:
             self.parsed_params["trading_activity"] = dict()
@@ -92,6 +91,7 @@ class CompanyQueryBuilder(object):
 
     def parse_boolean_argument(self, arg, include_if_false=True):
         """Update parsed params with boolean arg value."""
+        print "arg is - - - " + arg
         arg_val = self.parse_boolean(arg)
         if arg_val or include_if_false:
             self.parsed_params[arg] = arg_val
@@ -111,7 +111,10 @@ class CompanyQueryBuilder(object):
         
         Returns True or False if argument is present, otherwise None."""
 
+        print "arg is - - - " + arg
         arg_param = self.get_argument(arg, None)
+        print "arg_param is -  - - " + arg_param
+
         if not arg_param:
             return None
 

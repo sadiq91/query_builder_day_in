@@ -19,13 +19,11 @@ class Filter(object):
 
                 instance = classification(key,value)
 
-                print "key is - - - " + key
-                print "value is - - - " + str(value[0])
-
 
 
                 instance.parse()
 
+                print
                 self.param_value = instance.parsed_params[key]
                 self.param_key = key
 
