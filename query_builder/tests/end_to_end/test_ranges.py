@@ -41,3 +41,8 @@ def test_range_top_end():
     url = "/v1/company_query_builder?revenue=-100"
     response = get_es_query(url)
     assert response == revenue_range_template(None, 100)
+
+def test_range_negative_values():
+    url = "/v1/company_query_builder?revenue=-100-1000"
+    response = get_es_query(url)
+    assert response == revenue_range_template(-100, 1000)
