@@ -23,9 +23,9 @@ class Filter(object):
 
                 instance.parse()
 
-                print
-                self.param_value = instance.parsed_params[key]
-                self.param_key = key
+
+                self.param_value = instance.parsed_params[instance.query_param_key]
+                self.param_key = instance.query_param_key
 
                 print "RETURN Filter self.param_value is"
                 print self.param_value
