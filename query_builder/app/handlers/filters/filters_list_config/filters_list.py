@@ -1,7 +1,7 @@
-from query_builder.app.handlers.filters.NumRange import NumRange
-from query_builder.app.handlers.filters.Date import Date
-from query_builder.app.handlers.filters.Bool import Bool
-from query_builder.app.handlers.filters.Multi import Multi
+from query_builder.app.handlers.filters.filters_classes.Bool import Bool
+from query_builder.app.handlers.filters.filters_classes.Date import Date
+from query_builder.app.handlers.filters.filters_classes.Multi import Multi
+from query_builder.app.handlers.filters.filters_classes.Range import NumRange
 
 
 class FiltersList(object):

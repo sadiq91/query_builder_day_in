@@ -1,7 +1,7 @@
 
 
 
-from query_builder.app.handlers.filters.multi_class_filters import multi_filters
+from query_builder.app.handlers.filters.filters_list_config.multi_class_filters import multi_filters
 
 
 

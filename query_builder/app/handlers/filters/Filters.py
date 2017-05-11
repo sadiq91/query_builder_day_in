@@ -1,4 +1,4 @@
-from query_builder.app.handlers.filters_list import filters
+from query_builder.app.handlers.filters.filters_list_config.filters_list import filters
 
 
 
@@ -26,11 +26,6 @@ class Filter(object):
 
                 self.param_value = instance.parsed_params[instance.query_param_key]
                 self.param_key = instance.query_param_key
-
-                print "RETURN Filter self.param_value is"
-                print self.param_value
-                print "RETURN Filter self.param_key is"
-                print self.param_key
 
 
 

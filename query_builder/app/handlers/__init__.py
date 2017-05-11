@@ -1,2 +1,2 @@
+from query_builder.app.handlers.filters.filters_list_config.filters_list import FiltersList
 from .company_query_builder import CompanyQueryBuilder
-from .filters_list import FiltersList

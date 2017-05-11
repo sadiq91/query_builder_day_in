@@ -24,7 +24,7 @@ class NumRange():
 
 
        if self.lower or self.upper:
-           self.add_to_parsed_params(self.query_param_key, {"gte": self.lower, "lte": self.upper})
+           self.parsed_params[self.query_param_key] = {"gte": self.lower, "lte": self.upper}
 
    def parse_range(self):
         """Parser for arguments that are numerical range types.
@@ -63,8 +63,3 @@ class NumRange():
             return lbound, ubound
         else:
             return None, None
-
-
-   def add_to_parsed_params(self, param_key, param_value):
-       """Add params to parsed_params if arg exists"""
-       self.parsed_params[param_key] = param_value

@@ -49,6 +49,7 @@ class CompanyQueryBuilder(object):
             if missing:
                 raise exceptions.ParameterKeyError(key=", ".join(missing))
 
+
     def parse_parameters(self, org=None, model_config=None):
         """Parse the URL parameters and build parsed_params dict."""
 
