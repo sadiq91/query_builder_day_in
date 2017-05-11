@@ -1,11 +1,11 @@
-from query_builder.app.handlers.filters.Filters import filterObject
+from query_builder.app.handlers.filters.Filters import Filter
 from query_builder.app.handlers.filters.NumRange import NumRange
 from query_builder.app.handlers.filters.Date import Date
 from query_builder.app.handlers.filters.Bool import Bool
 from query_builder.app.handlers.filters.Multi import Multi
 
 def test_lists_match():
-    filters = filterObject.filters_list
+    filters = Filter.filters_list
 
     expected = {
         'cash': NumRange,

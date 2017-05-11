@@ -14,7 +14,6 @@ import docopt
 
 from query_builder.app import handlers
 
-
 def get_es_query(request_url):
     """
     Given a request URL path with query parameters, return an elasticsearch query

@@ -11,7 +11,6 @@ class NumRange():
 
    parsed_params =dict()
 
-
    def __init__(self,query_param_key, query_param_value):
        self.query_param_key = query_param_key
        self.query_param_value = query_param_value
@@ -42,7 +41,7 @@ class NumRange():
             exp = "^([-]*[0-9]*)[-]([-]*[0-9]*)$"
             m = re.search(exp, arg_param)
             if not m:
-                raise exceptions.ParameterValueError(key=arg, value=arg_param)
+                raise exceptions.ParameterValueError(self.query_param_key, value=arg_param)
 
             lbound, ubound = None, None
             # Parse lower bound
@@ -50,17 +49,17 @@ class NumRange():
                 try:
                     lbound = int(m.group(1))
                 except ValueError:
-                    raise exceptions.ParameterValueError(key=arg, value=arg_param)
+                    raise exceptions.ParameterValueError(self.query_param_key, value=arg_param)
 
             # Parse upper bound
             if m.group(2):
                 try:
                     ubound = int(m.group(2))
                 except ValueError:
-                    raise exceptions.ParameterValueError(key=arg, value=arg_param)
+                    raise exceptions.ParameterValueError(self.query_param_key, value=arg_param)
 
             if lbound != None and ubound != None and lbound > ubound:
-                raise exceptions.ParameterValueError(key=arg, value=arg_param)
+                raise exceptions.ParameterValueError(self.query_param_key, value=arg_param)
 
             return lbound, ubound
         else:

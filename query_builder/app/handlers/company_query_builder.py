@@ -6,7 +6,7 @@ from query_builder import exceptions
 from query_builder.app.elastic.piston import Piston
 from query_builder.app.handlers.pagination import Pagination
 from query_builder.config.app import settings
-from query_builder.app.handlers.filters.Filters import filterObject
+from query_builder.app.handlers.filters.Filters import Filter
 
 
 class CompanyQueryBuilder(object):
@@ -58,8 +58,9 @@ class CompanyQueryBuilder(object):
         #self.parse_range_argument("cash")
         #self.parse_range_argument("revenue")
 
-        filter_return_object = filterObject.filter_query(self.query_params)
-        self.parsed_params = filter_return_object
+        Filter.filter_query(self.query_params)
+        self.parsed_params[Filter.param_key] = Filter.param_value
+
 
 
         # Args which may have multiple queries e.g. &cid=1&cid=2
@@ -98,7 +99,7 @@ class CompanyQueryBuilder(object):
 
     def parse_boolean(self, arg):
         """Parse boolean argument types
-
+        
         Returns True or False if argument is present, otherwise None."""
 
         arg_param = self.get_argument(arg, None)
