@@ -154,7 +154,7 @@ class CompanyQueryBuilder(object):
         if arg:
             try:
                 parameter = datetime.datetime.strptime(
-                    arg, '%Y%m%de').date().isoformat()
+                    arg, '%Y%m%d').date().isoformat()
                 return parameter
             except Exception as e:
                 raise exceptions.ParameterValueError(key=arg, value=arg,

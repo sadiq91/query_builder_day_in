@@ -2,6 +2,7 @@
 
 # Log files
 logs/
+interview_env/
 
 # Packages
 *.egg
