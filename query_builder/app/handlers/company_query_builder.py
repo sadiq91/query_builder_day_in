@@ -1,6 +1,7 @@
 import datetime
 import re
 import urlparse
+import json
 
 from query_builder import exceptions
 from query_builder.app.elastic.piston import Piston
@@ -56,10 +57,7 @@ class CompanyQueryBuilder(object):
 
         Filter.filter_query(self.query_params)
 
-        #self.parsed_params.update(Filter.parsed_params)
-
         self.parsed_params[Filter.param_key] = Filter.param_value
-
 
 
         #Passing a dict as opposed to a key+value separately seem to break the assertion in the test-files...

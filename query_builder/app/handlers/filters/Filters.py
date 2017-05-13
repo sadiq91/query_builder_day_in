@@ -29,6 +29,11 @@ class Filter(object):
 
                 instance.parse()
 
+                #self.parsed_params = instance.parsed_params
+
+
+
+              
                 if instance.parsed_params.get(instance.query_param_key,None):
 
                     self.param_value = instance.parsed_params[instance.query_param_key]
@@ -36,7 +41,7 @@ class Filter(object):
                 else:
 
                     self.parsed_params[instance.query_param_key] = instance.parsed_params
-
+                
 
 
 Filter = Filter()
